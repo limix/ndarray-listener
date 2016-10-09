@@ -1,0 +1,49 @@
+language: python
+matrix:
+  include:
+  - os: linux
+    sudo: false
+    dist: trusty
+    python: '2.7'
+  - os: linux
+    sudo: false
+    dist: trusty
+    python: '3.4'
+  - os: linux
+    sudo: false
+    dist: trusty
+    python: '3.5'
+  - os: osx
+    language: generic
+    env: TRAVIS_PYTHON_VERSION=3.5
+before_install:
+- wget https://raw.githubusercontent.com/Horta/travis-miniconda/master/install.sh
+  -O install.sh
+- chmod +x install.sh
+- travis_retry bash -x ./install.sh
+install:
+- export PATH="$HOME/miniconda/bin:$PATH"
+- source activate travisci
+- travis_retry conda install pycparser -y --name travisci
+before_script:
+- export PATH="$HOME/miniconda/bin:$PATH"
+- source activate travisci
+- python setup.py test
+script:
+- export PATH="$HOME/miniconda/bin:$PATH"
+- source activate travisci
+- python setup.py sdist
+- pip install dist/`ls dist | grep -i -E '\.(gz)$' | head -1`
+- pushd /
+- python -c "import ndarray_listener; ndarray_listener.test()"
+- popd
+deploy:
+  provider: pypi
+  skip_cleanup: true
+  user: danilo.horta
+  password:
+    secure: qvuxeijNzni0wYRI1AbHF4l/Qfupk1Y2Ihg6w+hLYUvA8OaBqj2HIeecopjkk14Rv2gH7cWSCLp8rs0N06J3rYGH87u1GoLv3Tu5VdbvYaXWCY9aoeEGcoh7XkKTWZ2t4zBpft1nnXjAx68FDQCEr5NDi/EYM9AVrUez7nLB8yQYLV58uWEBp61rKJebiS2wiFJJytc6bTgSvGQfRk5vssxtdblJzajTz+fR6MYmYhN68j7rrwnr7zjxqEgcgRzGBQjNv7DOciAjpXy7S0okBTARopbQugrC0hVtghvwKsbu02XOAnLOM/M5S5SKPKHDp8JsNJtkMIAqViuoKWmp1Qzo4ITbs3+MpMZ6suc8Xj7QEMO/26gEhhTPWz8iNiy9CUYXxc50qP8QIZH4PYoOusTXXllsSiScHHR8NGAWcmeVmN9rswu+lkX/k/VL2cB2Prinmh52JJdCSzmO2tMfpz/1W1LiYj2iNLmZm3hcCls7OnS0oZJiH4gEv7EjoYfkxVRmuWWmXXwTQSP+PKnwJghyQPfHBhQzDOEqSU+ez+kQ2Bx21V1vj0TBxticJdN2X/y+WN1o1Li++dIgWjVZxiqw8FN8yiL8ltq1/6n8GR8y0C8GuJIO882HIWfobm/Qnywkvdowicv8ab2ClpvxPmL8aV1LqkpOB75dE1ompzs=
+  on:
+    branch: master
+notifications:
+  email: false
