@@ -1,9 +1,15 @@
-from __future__ import absolute_import
+from __future__ import absolute_import as _absolute_import
+
+from pkg_resources import get_distribution as _get_distribution
+from pkg_resources import DistributionNotFound as _DistributionNotFound
+
 from .ndarray_listener import ndarray_listener
 from pkg_resources import get_distribution
 
-__version__ = get_distribution('ndarray_listener').version
-
+try:
+    __version__ = _get_distribution('ndarray_listener').version
+except _DistributionNotFound:
+    __version__ = 'unknown'
 
 def test():
     import os
@@ -13,8 +19,11 @@ def test():
     os.chdir(src_path)
 
     try:
-        return_code = __import__('pytest').main([])
+        return_code = __import__('pytest').main(['-q'])
     finally:
         os.chdir(old_path)
+
+    if return_code == 0:
+        print("Congratulations. All tests have passed!")
 
     return return_code
