@@ -4,7 +4,6 @@ from pkg_resources import get_distribution as _get_distribution
 from pkg_resources import DistributionNotFound as _DistributionNotFound
 
 from .ndarray_listener import ndarray_listener
-from pkg_resources import get_distribution
 
 try:
     __version__ = _get_distribution('ndarray_listener').version
