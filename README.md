@@ -72,7 +72,7 @@ python -c "import ndarray_listener; ndarray_listener.test()"
 
 ## Authors
 
-* **Danilo Horta** - [Horta](https://github.com/Horta)
+* **Danilo Horta** - [https://github.com/Horta](https://github.com/Horta)
 
 ## License
 
