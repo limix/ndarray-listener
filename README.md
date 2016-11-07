@@ -4,12 +4,51 @@ NumPy ``ndarray`` that notifies listeners for data change
 
 ## Getting Started
 
-You can clone and test
+Watch for ``ndarray`` changes
 
-```
-git clone https://github.com/Horta/ndarray_listener.git
-cd ndarray_listener
-python setup.py test
+```python
+>>> from numpy import array
+>>>
+>>> from ndarray_listener import ndarray_listener
+>>>
+>>> a = array([-0.5, 0.1, 1.1])
+>>> b = ndarray_listener(a)
+>>> c = ndarray_listener(array([-0.5, 0.1, 1.1]))
+>>>
+>>> class Watcher(object):
+...
+...     def __init__(self):
+...             self.called_me = False
+...
+...     def __call__(self, _):
+...             self.called_me = True
+>>>
+>>> w = Watcher()
+>>> b.talk_to(w)
+>>>
+>>> w.called_me
+False
+>>> b[0] = 1.2
+>>> w.called_me
+True
+>>>
+>>> w = Watcher()
+>>> b.talk_to(w)
+>>>
+>>> w.called_me
+False
+>>> b[:] = 1
+>>> w.called_me
+True
+>>>
+>>> w = Watcher()
+>>> c.talk_to(w)
+>>>
+>>> w.called_me
+False
+>>> c[:] = c + c
+>>> w.called_me
+True
 ```
 
 ### Installing
