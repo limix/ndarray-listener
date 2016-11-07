@@ -15,11 +15,11 @@ def setup_package():
 
     setup_requires = [] + pytest_runner
     install_requires = ['numpy>=1.9']
-    tests_require = []
+    tests_require = ['pytest']
 
     metadata = dict(
         name='ndarray_listener',
-        version='1.0.8',
+        version='1.0.9',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",
