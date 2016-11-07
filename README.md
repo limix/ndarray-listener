@@ -33,9 +33,9 @@ python -c "import ndarray_listener; ndarray_listener.test()"
 
 ## Authors
 
-* **Danilo Horta** - *Initial work* - [Horta](https://github.com/Horta)
+* **Danilo Horta** - [Horta](https://github.com/Horta)
 
 ## License
 
 This project is licensed under the MIT License - see the
-[LICENSE.md](LICENSE.md) file for details
+[LICENSE](LICENSE) file for details
