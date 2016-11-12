@@ -16,11 +16,11 @@ from ndarray_listener import ndarray_listener as ndl
 a = ndl(array([-0.5, 0.1, 1.1]))
 
 class Observer(object):
-     def __init__(self):
-             self.called_me = False
+  def __init__(self):
+    self.called_me = False
 
-     def __call__(self, _):
-             self.called_me = True
+  def __call__(self, _):
+    self.called_me = True
 
 o = Observer()
 a.talk_to(o)
@@ -28,7 +28,7 @@ print(o.called_me)
 a[0] = 1.2
 print(o.called_me)
 ```
-it prints
+The output should be
 ```
 False
 True
