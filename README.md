@@ -54,7 +54,6 @@ After installation, you can test it
 ```bash
 python -c "import ndarray_listener; ndarray_listener.test()"
 ```
-
 as long as you have [pytest](http://docs.pytest.org/en/latest/).
 
 ## Authors
