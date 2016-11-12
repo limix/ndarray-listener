@@ -1,6 +1,6 @@
 # ndarray_listener
 
-[![PyPI](https://img.shields.io/pypi/l/ndarray-listener?style=flat-square)](https://pypi.python.org/pypi/ndarray-listener/)
+[![PyPI](https://img.shields.io/pypi/l/ndarray-listener.svg?style=flat-square)](https://pypi.python.org/pypi/ndarray-listener/)
 [![PyPI](https://img.shields.io/pypi/v/ndarray-listener.svg?style=flat-square)](https://pypi.python.org/pypi/ndarray-listener/)
 [![Anaconda-Server Badge](https://anaconda.org/conda-forge/ndarray_listener/badges/version.svg)](https://anaconda.org/conda-forge/ndarray_listener)
 [![Anaconda-Server Badge](https://anaconda.org/conda-forge/ndarray_listener/badges/installer/conda.svg)](https://conda.anaconda.org/conda-forge)
