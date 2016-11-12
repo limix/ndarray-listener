@@ -3,26 +3,19 @@
 [![PyPI](https://img.shields.io/pypi/l/ndarray-listener.svg?style=flat-square)](https://pypi.python.org/pypi/ndarray-listener/)
 [![PyPI](https://img.shields.io/pypi/v/ndarray-listener.svg?style=flat-square)](https://pypi.python.org/pypi/ndarray-listener/)
 [![Anaconda-Server Badge](https://anaconda.org/conda-forge/ndarray_listener/badges/version.svg)](https://anaconda.org/conda-forge/ndarray_listener)
-[![Anaconda-Server Badge](https://anaconda.org/conda-forge/ndarray_listener/badges/installer/conda.svg)](https://conda.anaconda.org/conda-forge)
 
+Implementation of the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern)
+for [NumPy](http://www.numpy.org) arrays.
 
-
-NumPy ``ndarray`` that notifies listeners for data change
-
-## Getting Started
-
-Watch for ``ndarray`` changes
+## Example
 
 ```python
 >>> from numpy import array
+>>> from ndarray_listener import ndarray_listener as ndl
 >>>
->>> from ndarray_listener import ndarray_listener
+>>> a = ndl(array([-0.5, 0.1, 1.1]))
 >>>
->>> a = array([-0.5, 0.1, 1.1])
->>> b = ndarray_listener(a)
->>> c = ndarray_listener(array([-0.5, 0.1, 1.1]))
->>>
->>> class Watcher(object):
+>>> class Observer(object):
 ...
 ...     def __init__(self):
 ...             self.called_me = False
@@ -30,52 +23,38 @@ Watch for ``ndarray`` changes
 ...     def __call__(self, _):
 ...             self.called_me = True
 >>>
->>> w = Watcher()
->>> b.talk_to(w)
+>>> o = Observer()
+>>> a.talk_to(o)
 >>>
->>> w.called_me
+>>> o.called_me
 False
->>> b[0] = 1.2
->>> w.called_me
-True
->>>
->>> w = Watcher()
->>> b.talk_to(w)
->>>
->>> w.called_me
-False
->>> b[:] = 1
->>> w.called_me
-True
->>>
->>> w = Watcher()
->>> c.talk_to(w)
->>>
->>> w.called_me
-False
->>> c[:] = c + c
->>> w.called_me
+>>> a[0] = 1.2
+>>> o.called_me
 True
 ```
 
-### Installing
+## Installing
 
-Via pip
+The recommended way of installing it is via
+[conda](http://conda.pydata.org/docs/index.html)
+```bash
+conda install -c conda-forge ndarray_listener
 ```
+
+An alternative way would be via pip
+```bash
 pip install ndarray_listener
 ```
 
-or via [Conda](http://conda.pydata.org/docs/index.html)
-```
-conda install -c conda-forge ndarray_listener
-```
 
 ## Running the tests
 
 After installation, you can test it
-```
+```bash
 python -c "import ndarray_listener; ndarray_listener.test()"
 ```
+
+as long as you have [pytest](http://docs.pytest.org/en/latest/).
 
 ## Authors
 
