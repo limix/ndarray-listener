@@ -3,6 +3,12 @@ import sys
 from setuptools import setup
 from setuptools import find_packages
 
+try:
+    import pypandoc
+    long_description = pypandoc.convert('README.md', 'rst')
+except(IOError, ImportError):
+    long_description = open('README.md').read()
+
 
 def setup_package():
     src_path = os.path.dirname(os.path.abspath(sys.argv[0]))
@@ -19,7 +25,7 @@ def setup_package():
 
     metadata = dict(
         name='ndarray_listener',
-        version='1.0.10',
+        version='1.0.11',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",
@@ -27,6 +33,7 @@ def setup_package():
         packages=find_packages(),
         zip_safe=True,
         description="Implementation of the Observer pattern for NumPy arrays.",
+        long_description=long_description,
         install_requires=install_requires,
         setup_requires=setup_requires,
         tests_require=tests_require,
