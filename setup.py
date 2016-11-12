@@ -26,6 +26,7 @@ def setup_package():
         url='https://github.com/Horta/ndarray_listener',
         packages=find_packages(),
         zip_safe=True,
+        description="Implementation of the Observer pattern for NumPy arrays.",
         install_requires=install_requires,
         setup_requires=setup_requires,
         tests_require=tests_require,
