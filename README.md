@@ -64,3 +64,7 @@ as long as you have [pytest](http://docs.pytest.org/en/latest/).
 
 This project is licensed under the MIT License - see the
 [LICENSE](LICENSE) file for details
+
+## Links
+
+- [ndarray_listener-feedstock](https://github.com/conda-forge/ndarray_listener-feedstock)
