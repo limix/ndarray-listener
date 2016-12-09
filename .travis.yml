@@ -42,8 +42,6 @@ notifications:
 deploy:
   provider: pypi
   user: dhorta
-  password:
-    secure: PhTHeaHtO0W4wc6olnZJdo5XXdeOZdywGmQdbnesgpQgqshbHQ2QfBaxmjX/4V9Jk9Ntm7wAXtF9PfEY5j7xVLpIAYZ5rBoHZ+2GLw7hC3AN1c1O+HvbUyx02mrl9Kys7IbR4Ww4Qj3or181VbNZxmN+9ohi7OWEA5W8bC6Iboy1WEjSH++S4zUtFc8JeGsXoskmZiLi/nbo+j7u/xOPsiBCR/Lib4OmyzZ0w1G3YXeoj7RxDXpyuI3m+pkccZ3i4ve/rIlmewzJS5yoZu8l8xg5muNpoYTCxRpgjDpFVJ8iFJ8tNQ9Tk1K3udM8QYNGJEK2C7uOLPCK8uJe92hyH+NGLklcXSDt8bcrfqFLVr1A4Fvl6wF1mU9Us9Ye0/22f6Mk39J5g0OV0d3+MG0C6qpzgJTie5fcC6ZZy9R88k+cuTH0A0P4jP79Mdhbo31k3rZfv/2V0wvtEAvm+UuSnjYQ/9RHEjy3k5PkUCs/aaR28LLj0ULeM9WuvBN6pKFNvluxSFbFjQmfcuUFGhNkCuZ3AcfaH7lmbOWzCIMGcSOiQz6ntS+4hbFIQPDpmNGvEziNrscKBladyiRxJdfz2fd5/lvmhMQYwY6bRK0DAF/WOjjCj3kj8z5di0IHd3uK0Pzz+hTK0Yy4ih8wcjk3OIfb88/NR4i1NOGg7SXOPs8=
   on:
     distributions: sdist bdist_wheel
-    repo: Horta/ndarray_listener
+    repo: glimix/ndarray-listener

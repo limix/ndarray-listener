@@ -24,12 +24,12 @@ def setup_package():
     tests_require = ['pytest']
 
     metadata = dict(
-        name='ndarray_listener',
-        version='1.0.15',
+        name='ndarray-listener',
+        version='1.0.16',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",
-        url='https://github.com/Horta/ndarray_listener',
+        url='https://github.com/glimix/ndarray-listener',
         packages=find_packages(),
         zip_safe=True,
         description="Implementation of the Observer pattern for NumPy arrays.",
@@ -55,7 +55,7 @@ def setup_package():
         pass
     else:
         metadata['distclass'] = CondaDistribution
-        metadata['conda_buildnum'] = 1
+        metadata['conda_buildnum'] = 0
         metadata['conda_features'] = ['mkl']
 
     try:

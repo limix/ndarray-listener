@@ -1,8 +1,8 @@
-# ndarray_listener
+# ndarray-listener
 
 [![PyPIl](https://img.shields.io/pypi/l/ndarray-listener.svg?style=flat-square)](https://pypi.python.org/pypi/ndarray-listener/)
 [![PyPIv](https://img.shields.io/pypi/v/ndarray-listener.svg?style=flat-square)](https://pypi.python.org/pypi/ndarray-listener/)
-[![Anaconda-Server Badge](https://anaconda.org/conda-forge/ndarray_listener/badges/version.svg)](https://anaconda.org/conda-forge/ndarray_listener)
+[![Anaconda-Server Badge](https://anaconda.org/conda-forge/ndarray-listener/badges/version.svg)](https://anaconda.org/conda-forge/ndarray-listener)
 
 Implementation of the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern)
 for [NumPy](http://www.numpy.org) arrays.
@@ -39,12 +39,12 @@ True
 The recommended way of installing it is via
 [conda](http://conda.pydata.org/docs/index.html)
 ```bash
-conda install -c conda-forge ndarray_listener
+conda install -c conda-forge ndarray-listener
 ```
 
 An alternative way would be via pip
 ```bash
-pip install ndarray_listener
+pip install ndarray-listener
 ```
 
 
@@ -67,4 +67,4 @@ This project is licensed under the MIT License - see the
 
 ## Links
 
-- [ndarray_listener-feedstock](https://github.com/conda-forge/ndarray_listener-feedstock)
+- [ndarray-listener-feedstock](https://github.com/conda-forge/ndarray-listener-feedstock)
