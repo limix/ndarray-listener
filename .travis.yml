@@ -1,4 +1,6 @@
 language: python
+git:
+  depth: 5
 matrix:
   include:
   - os: linux
@@ -16,22 +18,7 @@ matrix:
   - os: osx
     language: generic
     env: TRAVIS_PYTHON_VERSION=3.5
-before_install:
-- wget https://raw.githubusercontent.com/Horta/travis-miniconda/master/install.sh
-  -O install.sh
-- chmod +x install.sh
-- travis_retry bash -x ./install.sh
-install:
-- export PATH="$HOME/miniconda/bin:$PATH"
-- source activate travisci
-- travis_retry conda install pycparser -y --name travisci
-before_script:
-- export PATH="$HOME/miniconda/bin:$PATH"
-- source activate travisci
-- python setup.py test
 script:
-- export PATH="$HOME/miniconda/bin:$PATH"
-- source activate travisci
 - python setup.py sdist
 - pip install dist/`ls dist | grep -i -E '\.(gz)$' | head -1`
 - pushd /
@@ -41,6 +28,7 @@ notifications:
   email: false
 deploy:
   provider: pypi
+  skip_upload_docs: true
   user: dhorta
   on:
     distributions: sdist bdist_wheel
