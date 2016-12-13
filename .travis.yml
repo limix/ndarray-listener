@@ -30,6 +30,8 @@ deploy:
   provider: pypi
   skip_upload_docs: true
   user: dhorta
+  password:
+    secure: bdUuBVQnlBP0okM8kMs6q80m4tsgqfaHaGICv3zmfZBfOV0evQdX9IAGpzzjoL9Z0dmayLU5eTm6nGIvmmoKUezeY1NBY8V4eKuTic4zefCNzOGMlK3eF8M+2f73MBP9twpyBFiGsopLcYlJyjYztUnUunUaQenT5PcBqldVe1ohQrYXrF+WU13+jTyR4YhCnkMIeEW+KVqQs3/u/dxcl+daP+wO5LW8JTTluwnZ9HzEUNB19aQOXUTRoJqYZGfi8atQtMGb5APgFO24C45C2ww8adBibzmspShP41MlQNZpSWMirCcYH6NEJLTDz/qDTfsPwwOKKkND+KkuOf7GM/H5EuEChaHu8ZSQGcmW93MgkzwZO9s47XdkS0QIfAYPf4Etrb7mYKljeVg4fPKCZkLLHiCGKSvS8h/yHI9gAncucs/gNjDM02KvKmksfaJdzdRxzGEhdxXsvX8Lqr7sid+t/h14bKSHn0FHi8IGXnah69tVelCsnLHQUkYFXYzRB3gZqIPnGw7fXibS7gVqGfjU5YfeLeJThH5IMjTw+fHHGVJh9Aeyv/PI5JdPJpeblqj3rSc5q6P5e9pRfFsbBVzBGRwvGDMElw2oVBc7yNNgpN7sjEAi+ZLYnWojuUx2d0x8R/Au3kmcBvj97kPwNq4l5aImVpS11zWA+hnjdyM=
   on:
     distributions: sdist bdist_wheel
     repo: glimix/ndarray-listener
