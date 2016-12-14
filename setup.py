@@ -25,7 +25,7 @@ def setup_package():
 
     metadata = dict(
         name='ndarray-listener',
-        version='1.0.17dev0',
+        version='1.0.17dev1',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",
@@ -43,7 +43,6 @@ def setup_package():
             "Intended Audience :: Developers",
             "License :: OSI Approved :: MIT License",
             "Programming Language :: Python :: 2.7",
-            "Programming Language :: Python :: 3.4",
             "Programming Language :: Python :: 3.5",
             "Operating System :: OS Independent",
         ],
