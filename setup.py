@@ -6,7 +6,7 @@ from setuptools import find_packages
 try:
     import pypandoc
     long_description = pypandoc.convert('README.md', 'rst')
-except(IOError, ImportError):
+except(OSError, IOError, ImportError):
     long_description = open('README.md').read()
 
 
@@ -25,7 +25,7 @@ def setup_package():
 
     metadata = dict(
         name='ndarray-listener',
-        version='1.0.16',
+        version='1.0.17dev0',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",
@@ -48,15 +48,6 @@ def setup_package():
             "Operating System :: OS Independent",
         ],
     )
-
-    try:
-        from distutils.command.bdist_conda import CondaDistribution
-    except ImportError:
-        pass
-    else:
-        metadata['distclass'] = CondaDistribution
-        metadata['conda_buildnum'] = 0
-        metadata['conda_features'] = ['mkl']
 
     try:
         setup(**metadata)

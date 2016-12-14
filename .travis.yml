@@ -1,21 +1,18 @@
 language: python
+sudo: required
+dist: trusty
 git:
   depth: 5
 matrix:
   include:
   - os: linux
-    sudo: false
-    dist: trusty
     python: '2.7'
   - os: linux
-    sudo: false
-    dist: trusty
-    python: '3.4'
-  - os: linux
-    sudo: false
-    dist: trusty
     python: '3.5'
 script:
+- pip install pypandoc
+- python -c "from pypandoc import download_pandoc as dp; dp(targetfolder='~/bin/');"
+- export PATH=~/bin:$PATH
 - python setup.py sdist
 - pip install dist/`ls dist | grep -i -E '\.(gz)$' | head -1`
 - pushd /
@@ -25,10 +22,9 @@ notifications:
   email: false
 deploy:
   provider: pypi
-  skip_upload_docs: true
   user: dhorta
   password:
-    secure: bdUuBVQnlBP0okM8kMs6q80m4tsgqfaHaGICv3zmfZBfOV0evQdX9IAGpzzjoL9Z0dmayLU5eTm6nGIvmmoKUezeY1NBY8V4eKuTic4zefCNzOGMlK3eF8M+2f73MBP9twpyBFiGsopLcYlJyjYztUnUunUaQenT5PcBqldVe1ohQrYXrF+WU13+jTyR4YhCnkMIeEW+KVqQs3/u/dxcl+daP+wO5LW8JTTluwnZ9HzEUNB19aQOXUTRoJqYZGfi8atQtMGb5APgFO24C45C2ww8adBibzmspShP41MlQNZpSWMirCcYH6NEJLTDz/qDTfsPwwOKKkND+KkuOf7GM/H5EuEChaHu8ZSQGcmW93MgkzwZO9s47XdkS0QIfAYPf4Etrb7mYKljeVg4fPKCZkLLHiCGKSvS8h/yHI9gAncucs/gNjDM02KvKmksfaJdzdRxzGEhdxXsvX8Lqr7sid+t/h14bKSHn0FHi8IGXnah69tVelCsnLHQUkYFXYzRB3gZqIPnGw7fXibS7gVqGfjU5YfeLeJThH5IMjTw+fHHGVJh9Aeyv/PI5JdPJpeblqj3rSc5q6P5e9pRfFsbBVzBGRwvGDMElw2oVBc7yNNgpN7sjEAi+ZLYnWojuUx2d0x8R/Au3kmcBvj97kPwNq4l5aImVpS11zWA+hnjdyM=
+    secure: dK8oF9DenU3djjkmvxDRS6xoIluQnTkKdL38fdHsPJ+fKLzANsOkL1nH/YGTjlakg0lOXhbXTlzFi5b/u7dfvCAxH5SKpHduIDeK0zKk1+g8XhJqCHPiKC2ijdIAsql/ki6WEn84o/sy61YPvs3Ddz9NHEPpI7+U/lf5j0W5+NDW+C7o39znMEbInnoZUOt5WQgs8nTURByNB7P6xaRLWlijTj3YfO4dDqI4GcPSsC3lMaXOsa7Vlu6INJfNUsFl7qfcf+9iha/QhwYemRlWb7kSmSZ6Xqzpc5fBxY2KIvAlNL7+YmhDhFVKkIXGaqhs1RXEL/thbhf16RE0ebmJf3hk8Kl1kYS5nbPHbUo8EzBk2dZNFOXfs2CHnzrhyRcVauc3vGeDJt2LPr5rnEWSAg9bbzHx2UIH40z3vMpOWLQYT5wi+x/PfBcxvmMen2iSr2lw2FoOhRuBh4ct99EypvvdvhFdMs7Gzp62xUZK2BzGrcvQ+y6rX2Vq00xMHR7AaaiYOOfMJj+GZpOa6AzzPYnelhig7sioTM7LLLxTnq5Y47YzWsqeGLlCVqyQnDHyciVFEQAy/bo3DNHU8ON3gITsz8xYwFCkxtlxOut8/VYBwRCRV+Hq7H5d4T64iMMVbA6lk4FYEQ2TWIX2n2wzROeB9eoyxWiKQZr2lcqhL9M=
   on:
     distributions: sdist bdist_wheel
     repo: glimix/ndarray-listener
