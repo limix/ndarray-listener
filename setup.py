@@ -1,12 +1,12 @@
 import os
 import sys
-from setuptools import setup
-from setuptools import find_packages
+
+from setuptools import find_packages, setup
 
 try:
     import pypandoc
-    long_description = pypandoc.convert('README.md', 'rst')
-except(OSError, IOError, ImportError):
+    long_description = pypandoc.convert_file('README.md', 'rst')
+except (OSError, IOError, ImportError):
     long_description = open('README.md').read()
 
 
@@ -25,7 +25,7 @@ def setup_package():
 
     metadata = dict(
         name='ndarray-listener',
-        version='1.0.18',
+        version='1.0.19',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",
@@ -40,19 +40,16 @@ def setup_package():
         include_package_data=True,
         classifiers=[
             "Development Status :: 5 - Production/Stable",
-            "Intended Audience :: Developers",
             "License :: OSI Approved :: MIT License",
-            "Programming Language :: Python :: 2.7",
-            "Programming Language :: Python :: 3.5",
             "Operating System :: OS Independent",
-        ],
-    )
+        ], )
 
     try:
         setup(**metadata)
     finally:
         del sys.path[0]
         os.chdir(old_path)
+
 
 if __name__ == '__main__':
     setup_package()
