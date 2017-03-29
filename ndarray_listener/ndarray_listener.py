@@ -1,9 +1,8 @@
-from numpy import ndarray
-from numpy import asarray
+# pylint: disable=R0903,W0212,W0201
+from numpy import asarray, ndarray
 
 
 class ndarray_listener(ndarray):
-
     def __new__(cls, input_array):
         obj = asarray(input_array).view(cls)
         obj._listeners = []
@@ -21,6 +20,10 @@ class ndarray_listener(ndarray):
     def __setattr__(self, *args, **kwargs):
         super(ndarray_listener, self).__setattr__(*args, **kwargs)
         self.__notify()
+
+    def __getitem__(self, *args, **kwargs):
+        v = super(ndarray_listener, self).__getitem__(*args, **kwargs)
+        return ndarray_listener(v)
 
     def talk_to(self, me):
         self._listeners.append(me)

@@ -25,7 +25,7 @@ def setup_package():
 
     metadata = dict(
         name='ndarray-listener',
-        version='1.0.19',
+        version='1.0.20',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",

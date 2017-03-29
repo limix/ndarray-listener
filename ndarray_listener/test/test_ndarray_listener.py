@@ -1,7 +1,5 @@
 from numpy import array
-
-from numpy.testing import assert_array_almost_equal
-from numpy.testing import assert_equal
+from numpy.testing import assert_array_almost_equal, assert_equal
 
 from ndarray_listener import ndarray_listener
 
@@ -22,8 +20,7 @@ def test_notification():
     b = ndarray_listener(a)
     c = ndarray_listener(array([-0.5, 0.1, 1.1]))
 
-    class Watcher(object):
-
+    class Watcher(object): # pylint: disable=R0903
         def __init__(self):
             self.called_me = False
 
@@ -50,3 +47,8 @@ def test_notification():
     assert_equal(w.called_me, False)
     c[:] = c + c
     assert_equal(w.called_me, True)
+
+
+def test_iterator():
+    a = ndarray_listener([-0.5, 0.1, 1.1])
+    assert isinstance(next(iter(a)), ndarray_listener)
