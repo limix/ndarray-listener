@@ -29,7 +29,7 @@ def setup_package():
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         license="MIT",
-        url='https://github.com/glimix/ndarray-listener',
+        url='https://github.com/limix/ndarray-listener',
         packages=find_packages(),
         zip_safe=True,
         description="Implementation of the Observer pattern for NumPy arrays.",
