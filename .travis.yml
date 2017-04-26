@@ -1,29 +1,35 @@
 language: python
 sudo: required
 dist: trusty
+services: docker
 git:
   depth: 5
+cache:
+  pip: true
+  directories:
+  - "$HOME/bin"
+  - "$HOME/.download"
 matrix:
   include:
   - python: 2.7
   - python: 3.5
   - python: 3.6
+  - env: DOCKER_IMAGE=quay.io/pypa/manylinux1_x86_64
+  - os: osx
+    language: generic
+    env: PYENV=py27
+  - os: osx
+    language: generic
+    env: PYENV=py35
+  - os: osx
+    language: generic
+    env: PYENV=py36
 before_install:
-  - travis/install_pandoc.sh
+- travis_retry bash <(curl -s https://raw.githubusercontent.com/limix/travis-tools/master/get-travis-tools.sh)
+- travis_retry travis/before-install.sh
 script:
-  - python setup.py sdist
-  - pip install dist/`ls dist | grep -i -E '\.(gz)$' | head -1`
-  - pushd /
-  - python -c "import sys; import ndarray_listener; sys.exit(ndarray_listener.test())"
-  - popd
+- travis_retry travis/script.sh
+after_success:
+- travis_retry travis/after-success.sh
 notifications:
   email: false
-deploy:
-  provider: pypi
-  skip_upload_docs: true
-  user: dhorta
-  password:
-    secure: dK8oF9DenU3djjkmvxDRS6xoIluQnTkKdL38fdHsPJ+fKLzANsOkL1nH/YGTjlakg0lOXhbXTlzFi5b/u7dfvCAxH5SKpHduIDeK0zKk1+g8XhJqCHPiKC2ijdIAsql/ki6WEn84o/sy61YPvs3Ddz9NHEPpI7+U/lf5j0W5+NDW+C7o39znMEbInnoZUOt5WQgs8nTURByNB7P6xaRLWlijTj3YfO4dDqI4GcPSsC3lMaXOsa7Vlu6INJfNUsFl7qfcf+9iha/QhwYemRlWb7kSmSZ6Xqzpc5fBxY2KIvAlNL7+YmhDhFVKkIXGaqhs1RXEL/thbhf16RE0ebmJf3hk8Kl1kYS5nbPHbUo8EzBk2dZNFOXfs2CHnzrhyRcVauc3vGeDJt2LPr5rnEWSAg9bbzHx2UIH40z3vMpOWLQYT5wi+x/PfBcxvmMen2iSr2lw2FoOhRuBh4ct99EypvvdvhFdMs7Gzp62xUZK2BzGrcvQ+y6rX2Vq00xMHR7AaaiYOOfMJj+GZpOa6AzzPYnelhig7sioTM7LLLxTnq5Y47YzWsqeGLlCVqyQnDHyciVFEQAy/bo3DNHU8ON3gITsz8xYwFCkxtlxOut8/VYBwRCRV+Hq7H5d4T64iMMVbA6lk4FYEQ2TWIX2n2wzROeB9eoyxWiKQZr2lcqhL9M=
-  on:
-    distributions: sdist
-    repo: glimix/ndarray-listener
