@@ -35,6 +35,7 @@ notifications:
   email: false
 deploy:
   provider: pypi
+  server: https://upload.pypi.org/legacy/
   user: dhorta
   password:
     secure: tMbfIo19aMiDUCMmrsUuCMQFjxyrD0xV/Uzje2FeBHCxmKFlBTH0UBgzs+yJ6VMepwgWfEqPQLOAcUdsHuYscakCp0CR8/+zLGmZPtedjhIOi+L+A0vgOQjdO3mlyO40HGDPPQC0CrW0uiXNttsDCfOyS10/lYoQ+RpxaGiMo73aoS7oLsvyO6+D0p0jjxSpwNAqNquSsNse6V339eWPtzWg0/KunUui1LHhgo5im1dT5UZztMTCCq/hX515uOSpTeZyXH80zUoDGuoIvCjVc19FPLE6EMLVn7EbakVFfCTJZtM5KaVHHi9+Bc3E6m4cw4QYyPeZ3/i60RnXZMbAaBLmQ/wODnTSaVHCQ5UjALctkdw+UYBqduqNp6uNqHr/YC9fAFnHM4YOVEM53jaEZkc9E/NPG9XJ/0q4Yyvkh3LkrlG4gLZg47dpXYooY39+a7yii0rxSkdbE+wp3u0b03KQLg79PguGAZtJnvOamlWFUQM/iUD4VuVjRej6d2oGVE8z9P/GY8S0KMDWY37oQ4104OyYZLyuiIhlRYsthz4jypHT8kZyvJRnQdXE+3RmumQ7UQ49Ycm3jPQ75JJo70eTwcOAwzaN3axE9FqfqvJO2j8La1Ejrq5HnA8XNDdQUEiGnpmtHXiPVRUDIXR/0C3VbEoM+KF4O23dSjLFOG8=
