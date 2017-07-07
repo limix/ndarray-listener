@@ -20,7 +20,7 @@ def test_notification():
     b = ndarray_listener(a)
     c = ndarray_listener(array([-0.5, 0.1, 1.1]))
 
-    class Watcher(object): # pylint: disable=R0903
+    class Watcher(object):  # pylint: disable=R0903
         def __init__(self):
             self.called_me = False
 
@@ -52,3 +52,14 @@ def test_notification():
 def test_iterator():
     a = ndarray_listener([-0.5, 0.1, 1.1])
     assert isinstance(next(iter(a)), ndarray_listener)
+
+
+def test_printing(capsys):
+    a = ndarray_listener(array([-0.5, 0.1, 1.1]))
+
+    print(a)
+    out, _ = capsys.readouterr()
+    assert out == "[-0.5  0.1  1.1]\n"
+    print([a])
+    out, _ = capsys.readouterr()
+    assert out == "[ndarray_listener([-0.5,  0.1,  1.1])]\n"
