@@ -1,7 +1,6 @@
-from numpy import array
-from numpy.testing import assert_array_almost_equal, assert_equal
-
 from ndarray_listener import ndarray_listener
+from numpy import array
+from numpy.testing import assert_, assert_array_almost_equal, assert_equal
 
 
 def test_operations():
@@ -51,7 +50,7 @@ def test_notification():
 
 def test_iterator():
     a = ndarray_listener([-0.5, 0.1, 1.1])
-    assert isinstance(next(iter(a)), ndarray_listener)
+    assert_(isinstance(next(iter(a)), ndarray_listener))
 
 
 def test_printing(capsys):
@@ -59,7 +58,7 @@ def test_printing(capsys):
 
     print(a)
     out, _ = capsys.readouterr()
-    assert out == "[-0.5  0.1  1.1]\n"
+    assert_(out == "[-0.5  0.1  1.1]\n")
     print([a])
     out, _ = capsys.readouterr()
-    assert out == "[ndarray_listener([-0.5,  0.1,  1.1])]\n"
+    assert_(out == "[ndarray_listener([-0.5,  0.1,  1.1])]\n")
