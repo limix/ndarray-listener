@@ -71,7 +71,7 @@ Authors
 License
 -------
 
-This project is licensed under the MIT License - see the License_ file for
+This project is licensed under the MIT License - see the `License file`_ for
 details.
 
 .. |Build-Status| image:: https://travis-ci.org/limix/ndarray-listener.svg?branch=master
@@ -98,7 +98,7 @@ details.
 .. |License-Badge| image:: https://img.shields.io/pypi/l/ndarray-listener.svg
     :target: https://raw.githubusercontent.com/ndarray-listener/ndarray-listener/master/LICENCE
 
-.. _License: https://raw.githubusercontent.com/limix/ndarray-listener/master/LICENSE
+.. _License file: https://raw.githubusercontent.com/limix/ndarray-listener/master/LICENSE
 
 .. _Danilo Horta: https://github.com/horta
 
