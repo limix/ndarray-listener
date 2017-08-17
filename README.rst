@@ -96,9 +96,9 @@ details.
     :target: https://anaconda.org/conda-forge/ndarray-listener
 
 .. |License-Badge| image:: https://img.shields.io/pypi/l/ndarray-listener.svg
-    :target: https://raw.githubusercontent.com/ndarray-listener/ndarray-listener/master/LICENCE
+    :target: https://raw.githubusercontent.com/ndarray-listener/ndarray-listener/master/LICENSE.txt
 
-.. _License file: https://raw.githubusercontent.com/limix/ndarray-listener/master/LICENSE
+.. _License file: https://raw.githubusercontent.com/limix/ndarray-listener/master/LICENSE.txt
 
 .. _Danilo Horta: https://github.com/horta
 
