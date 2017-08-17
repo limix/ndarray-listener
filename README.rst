@@ -5,8 +5,7 @@ ndarray-listener
 
 |Build-Status| |Codacy-Grade| |License|
 
-Implementation of the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern)
-for [NumPy](http://www.numpy.org) arrays.
+Implementation of the `Observer pattern`_ for NumPy_ arrays.
 
 Example
 -------
@@ -108,3 +107,7 @@ License-File_ file for details.
 .. _pip: https://pypi.python.org/pypi/pip
 
 .. _pytest: http://docs.pytest.org/en/latest/
+
+.. _Observer pattern: https://en.wikipedia.org/wiki/Observer_pattern
+
+.. _NumPy: http://www.numpy.org
