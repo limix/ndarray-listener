@@ -3,7 +3,7 @@ sudo: required
 dist: trusty
 services: docker
 git:
-  depth: 5
+  depth: 3
 cache:
   pip: true
   directories:
@@ -12,7 +12,6 @@ cache:
 matrix:
   include:
   - python: 2.7
-  - python: 3.5
   - python: 3.6
   - env: DOCKER_IMAGE=quay.io/pypa/manylinux1_x86_64
   - os: osx
@@ -20,19 +19,22 @@ matrix:
     env: PYENV=py27
   - os: osx
     language: generic
-    env: PYENV=py35
-  - os: osx
-    language: generic
     env: PYENV=py36
 before_install:
 - travis_retry bash <(curl -s https://raw.githubusercontent.com/limix/travis-tools/master/get-travis-tools.sh)
 - travis_retry travis/before-install.sh
+install:
+- travis_retry travis/install.sh
 script:
 - travis_retry travis/script.sh
 after_success:
 - travis_retry travis/after-success.sh
 notifications:
-  email: false
+  email:
+    recipients:
+      - danilo.horta@gmail.com
+    on_success: change
+    on_failure: always
 deploy:
   provider: pypi
   server: https://upload.pypi.org/legacy/
@@ -46,4 +48,3 @@ deploy:
 env:
   global:
   - secure: bfh5ftqvAqoLUi8qLwm4Q5L3B1u9kdcfeTZheaogMcKrYZDs1ng0n2C8ktCAxp4M1lJmbh91UmwFzdu7k42102OPnq6D1WkCE/lvO7RFOGMsZ+8RI27cLAC78pxjKIoH7IGi0L0dBjMv3vERMIKlTGzNYBFWuNI34D0Di/IcuX31tfHi0TzRrGLaKDuRIv48B4tBTSLD8pkZSZJ7bJroEPK3wKOfQQc3YFyeB5aCgnxPmq5oY4KiD7ycfB7hCMGa0OffGrYx0ktXqlEANlFmn+n4zM6ETK/SNsFWeDmqCOHN3I3wR2Wfn/EVsuX6DOoptcwarKlOF2W1wYFiIBpAqnREdfpdI/Fo3avIiJONXdp1//UHJaz0ZGtbhPahsYQTWB5EQDJAqN4f4LKT74+DXBz3CmsVXeOtPPv0+3KGXmVFTfov3pA8l45Ag0y31BLu9Br5Kl6D4vyCJ83S94X3CWXqkW8VeSnPi7vrMwLwQIZUz0ai+a+9j+yxHd/YuYlK+e0C6KKjMSVDEDrlzCPHlxYpiymgRqCBwS6XBeWiER7mFAOYTjJ0hm2LzLpR7UEvKNkXzd4u9EpuGKa1vFQyR3eC1s5Kw9a6efHGShWMLjL2GMbobWwkmKCOKdszZNNfn+tWeSVVIYW5xh6Z1FWUfpXsG9byRKhWWyl/l7C+Xd4=
-  - PKG_NAME=ndarray_listener

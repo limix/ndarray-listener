@@ -1,4 +1,3 @@
-# pylint: disable=R0903,W0212,W0201
 from numpy import asarray, ndarray
 
 
