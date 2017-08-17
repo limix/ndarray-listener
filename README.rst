@@ -1,7 +1,8 @@
+
 ndarray-listener
 ================
 
-|PyPI-Status| |PyPI-Versions| |Conda-Forge-Status| |Conda-Downloads|
+|PyPI-Status| |Conda-Forge-Status| |Conda-Downloads|
 
 |Build-Status| |Codacy-Grade| |License-Badge|
 
@@ -81,12 +82,6 @@ details.
     :target: https://www.codacy.com/app/danilo.horta/ndarray-listener?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=limix/ndarray-listener&amp;utm_campaign=Badge_Grade
 
 .. |PyPI-Status| image:: https://img.shields.io/pypi/v/ndarray-listener.svg
-    :target: https://pypi.python.org/pypi/ndarray-listener
-
-.. |PyPI-Downloads| image:: https://img.shields.io/pypi/dm/ndarray-listener.svg
-    :target: https://pypi.python.org/pypi/ndarray-listener
-
-.. |PyPI-Versions| image:: https://img.shields.io/pypi/pyversions/ndarray-listener.svg
     :target: https://pypi.python.org/pypi/ndarray-listener
 
 .. |Conda-Forge-Status| image:: https://anaconda.org/conda-forge/ndarray-listener/badges/version.svg
