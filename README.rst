@@ -3,7 +3,7 @@ ndarray-listener
 
 |PyPI-Status| |PyPI-Versions| |Conda-Forge-Status| |Conda-Downloads|
 
-|Build-Status| |Codacy-Grade| |License|
+|Build-Status| |Codacy-Grade| |License-Badge|
 
 Implementation of the `Observer pattern`_ for NumPy_ arrays.
 
@@ -71,8 +71,8 @@ Authors
 License
 -------
 
-This project is licensed under the MIT License - see the
-License-File_ file for details.
+This project is licensed under the MIT License - see the License_ file for
+details.
 
 .. |Build-Status| image:: https://travis-ci.org/limix/ndarray-listener.svg?branch=master
     :target: https://travis-ci.org/limix/ndarray-listener
@@ -95,10 +95,10 @@ License-File_ file for details.
 .. |Conda-Downloads| image:: https://anaconda.org/conda-forge/ndarray-listener/badges/downloads.svg
     :target: https://anaconda.org/conda-forge/ndarray-listener
 
-.. |License| image:: https://img.shields.io/pypi/l/ndarray-listener.svg
+.. |License-Badge| image:: https://img.shields.io/pypi/l/ndarray-listener.svg
     :target: https://raw.githubusercontent.com/ndarray-listener/ndarray-listener/master/LICENCE
 
-.. _License-File: https://raw.githubusercontent.com/limix/ndarray-listener/master/LICENSE
+.. _License: https://raw.githubusercontent.com/limix/ndarray-listener/master/LICENSE
 
 .. _Danilo Horta: https://github.com/horta
 
