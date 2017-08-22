@@ -1,14 +1,30 @@
+from __future__ import unicode_literals
+
 import re
 import sys
 from os import chdir, getcwd
 from os.path import abspath, dirname, join
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 try:
     from configparser import ConfigParser
 except ImportError:
     from ConfigParser import ConfigParser
+
+PY2 = sys.version_info[0] == 2
+
+
+def _unicode_airlock(v):
+    if isinstance(v, bytes):
+        v = v.decode()
+    return v
+
+
+if PY2:
+    string_types = unicode, str
+else:
+    string_types = bytes, str
 
 
 class setup_folder(object):
@@ -47,8 +63,9 @@ def set_long_description(metadata):
 def convert_types(metadata):
     bools = ['True', 'False']
     for k in metadata.keys():
-        if isinstance(metadata[k], str) and metadata[k] in bools:
-            metadata[k] = metadata[k] == 'True'
+        v = _unicode_airlock(metadata[k])
+        if isinstance(metadata[k], string_types) and v in bools:
+            metadata[k] = v == 'True'
 
 
 def setup_package():
@@ -56,8 +73,9 @@ def setup_package():
 
         config = ConfigParser()
         config.read('setup.cfg')
+
         metadata = dict(config.items('metadata'))
-        metadata['packages'] = eval(metadata['packages'])
+        metadata['packages'] = find_packages()
         metadata['platforms'] = eval(metadata['platforms'])
 
         metadata['version'] = get_init_metadata(metadata, 'version')
@@ -66,6 +84,8 @@ def setup_package():
         metadata['name'] = get_init_metadata(metadata, 'name')
         make_list(metadata, 'classifiers')
         make_list(metadata, 'keywords')
+        if 'cffi_modules' in metadata:
+            make_list(metadata, 'cffi_modules')
         set_long_description(metadata)
         convert_types(metadata)
 
