@@ -30,7 +30,7 @@ class ndarray_listener(ndarray):
         >>>
         >>> you0 = Watcher("First guy")
         >>> you1 = Watcher("Second guy")
-        >>> 
+        >>>
         >>> scalar.talk_to(you0)
         >>> scalar.itemset(-1.0)
         First guy called with -1.0
