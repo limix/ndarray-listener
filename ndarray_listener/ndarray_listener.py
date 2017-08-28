@@ -16,6 +16,7 @@ class ndarray_listener(ndarray):
 
     .. doctest::
 
+        >>> from __future__ import print_function
         >>> from ndarray_listener import ndarray_listener
         >>> from numpy import atleast_1d
         >>>
@@ -24,7 +25,7 @@ class ndarray_listener(ndarray):
         ...         self._msg = msg
         ...
         ...     def __call__(self, value):
-        ...         print(self._msg + " called with", value)
+        ...         print(self._msg + " called with %s" % str(value))
         ...
         >>> scalar = ndarray_listener(-0.5)
         >>>
@@ -95,6 +96,10 @@ class ndarray_listener(ndarray):
         if obj is None:
             return
         self._listeners = getattr(obj, '_listeners', [])
+
+    def __setslice__(self, *args, **kwargs):
+        super(ndarray_listener, self).__setslice__(*args, **kwargs)
+        self.__notify()
 
     def __setitem__(self, *args, **kwargs):
         super(ndarray_listener, self).__setitem__(*args, **kwargs)
