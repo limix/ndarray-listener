@@ -30,3 +30,7 @@ class ndarray_listener(ndarray):
     def __notify(self):
         for l in self._listeners:
             l(super(ndarray_listener, self))
+
+    def itemset(self, *args, **kwargs):
+        super(ndarray_listener, self).itemset(*args, **kwargs)
+        self.__notify()

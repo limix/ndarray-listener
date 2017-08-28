@@ -14,6 +14,12 @@ def test_operations():
     assert_array_almost_equal(b - c, [0, 0, 0])
 
 
+def test_itemset():
+    a = ndarray_listener(-0.5)
+    a.itemset(1.0)
+    assert_array_almost_equal(a, [1])
+
+
 def test_notification():
     a = array([-0.5, 0.1, 1.1])
     b = ndarray_listener(a)
