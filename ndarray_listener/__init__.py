@@ -2,7 +2,7 @@ from ._test import test
 from .ndarray_listener import ndarray_listener
 
 __name__ = "ndarray-listener"
-__version__ = "1.0.24"
+__version__ = "1.0.25"
 __author__ = "Danilo Horta"
 __author_email__ = "horta@ebi.ac.uk"
 
