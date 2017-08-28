@@ -3,6 +3,9 @@ r"""
 Usage
 *****
 """
+from distutils.version import StrictVersion
+
+from numpy import __version__ as npyver
 from numpy import asarray, ndarray
 
 
@@ -97,9 +100,11 @@ class ndarray_listener(ndarray):
             return
         self._listeners = getattr(obj, '_listeners', [])
 
-    def __setslice__(self, *args, **kwargs):
-        super(ndarray_listener, self).__setslice__(*args, **kwargs)
-        self.__notify()
+    if StrictVersion(npyver) < StrictVersion('1.13'):
+
+        def __setslice__(self, *args, **kwargs):
+            super(ndarray_listener, self).__setslice__(*args, **kwargs)
+            self.__notify()
 
     def __setitem__(self, *args, **kwargs):
         super(ndarray_listener, self).__setitem__(*args, **kwargs)
