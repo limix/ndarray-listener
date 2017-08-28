@@ -4,7 +4,7 @@ ndarray-listener
 
 |PyPI-Status| |Conda-Forge-Status| |Conda-Downloads|
 
-|Build-Status| |Codacy-Grade| |License-Badge|
+|Build-Status| |Codacy-Grade| |License-Badge| |Doc-Status|
 
 Implementation of the `Observer pattern`_ for NumPy_ arrays.
 
@@ -92,6 +92,9 @@ details.
 
 .. |License-Badge| image:: https://img.shields.io/pypi/l/ndarray-listener.svg
     :target: https://raw.githubusercontent.com/ndarray-listener/ndarray-listener/master/LICENSE.txt
+
+.. |Doc-Status| image:: https://readthedocs.org/projects/ndarray-listener/badge/?style=flat-square&version=stable
+    :target: https://ndarray-listener.readthedocs.io/
 
 .. _License file: https://raw.githubusercontent.com/limix/ndarray-listener/master/LICENSE.txt
 
