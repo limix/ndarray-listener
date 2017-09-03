@@ -91,7 +91,7 @@ details.
     :target: https://anaconda.org/conda-forge/ndarray-listener
 
 .. |License-Badge| image:: https://img.shields.io/pypi/l/ndarray-listener.svg
-    :target: https://raw.githubusercontent.com/ndarray-listener/ndarray-listener/master/LICENSE.txt
+    :target: https://raw.githubusercontent.com/limix/ndarray-listener/master/LICENSE.txt
 
 .. |Doc-Status| image:: https://readthedocs.org/projects/ndarray-listener/badge/?style=flat-square&version=stable
     :target: https://ndarray-listener.readthedocs.io/
