@@ -2,7 +2,7 @@ language: python
 sudo: false
 python: 3.6
 env:
-  - PKGNAME=ndarray_listener
+  - PKG_NAME=ndarray_listener
 addons:
   apt:
     packages:
@@ -11,7 +11,7 @@ install:
 - pip install -U setuptools pytest pytest-pep8
 script:
 - python setup.py test && git clean -xdf && pip install . && cd ~/
-- python -c "import sys; import $PKGNAME; sys.exit($PKGNAME.test())"
+- python -c "import sys; import $PKG_NAME; sys.exit($PKG_NAME.test())"
 notifications:
   email:
     recipients:
