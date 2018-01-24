@@ -9,12 +9,8 @@ environment:
 
 install:
     - set PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
-    - pip install -U wheel six pytest setuptools
-    - cp requirements.txt ..\ && cd ..\
-    - pip install -r requirements.txt -q
-    - del requirements.txt && cd %APPVEYOR_BUILD_FOLDER%
-    - python setup.py test
-    - pip install .
+    - pip install -U setuptools pip pypandoc
+    - python setup.py test && git clean -xdf && pip install .
 
 test_script:
     - cd C:\

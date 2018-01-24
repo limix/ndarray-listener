@@ -56,6 +56,9 @@ class ndarray_listener(np.ndarray):
 
         >>> from ndarray_listener import ndarray_listener
         >>> from numpy import atleast_1d
+        >>> from numpy import set_printoptions
+        >>>
+        >>> set_printoptions(precision=2, suppress=True)
         >>>
         >>> vector = ndarray_listener([-0.5, 0.1])
         >>>

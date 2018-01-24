@@ -1,22 +1,17 @@
 language: python
 sudo: false
 python: 3.6
+env:
+  - PKG_NAME=ndarray_listener
 addons:
   apt:
     packages:
     - pandoc
 install:
-- pushd . && cp requirements.txt ~/ && cd ~/
-- travis_retry pip install -r requirements.txt -q
-- rm requirements.txt && popd
+- pip install -U setuptools pip pypandoc
 script:
-- coverage run --source ndarray-listener -m pytest
-- python setup.py install && pip uninstall ndarray-listener --yes
-- python setup.py sdist
-- pip install dist/$(ls dist | grep -i -E '\.(gz)$' | head -1)
-- pip uninstall ndarray-listener --yes
-after_success:
-- codecov
+- python setup.py test && git clean -xdf && pip install . && cd ~/
+- python -c "import sys; import $PKG_NAME; sys.exit($PKG_NAME.test())"
 notifications:
   email:
     recipients:
