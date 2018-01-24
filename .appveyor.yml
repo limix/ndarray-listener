@@ -9,7 +9,7 @@ environment:
 
 install:
     - set PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%
-    - pip install -U setuptools pytest pytest-pep8 numpy pip
+    - pip install -U setuptools pip pypandoc
     - python setup.py test && git clean -xdf && pip install .
 
 test_script:
