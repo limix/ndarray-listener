@@ -6,3 +6,4 @@ pytest-runner>=3.0
 pytest>=3.3.2
 setuptools>=38.4.0
 sphinx_rtd_theme>=0.2.4
+sphinx>=1.6.6
