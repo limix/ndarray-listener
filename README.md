@@ -1,5 +1,7 @@
 # ndarray-listener
 
+[![Travis](https://img.shields.io/travis/limix/ndarray-listener.svg?style=flat-square&label=linux%20%2F%20macos%20build)](https://travis-ci.org/limix/ndarray-listener) [![AppVeyor](https://img.shields.io/appveyor/ci/Horta/ndarray-listener.svg?style=flat-square&label=windows%20build)](https://ci.appveyor.com/project/Horta/ndarray-listener)
+
 Implementation of the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern) for NumPy arrays.
 
 ## Example
