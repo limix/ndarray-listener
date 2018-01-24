@@ -99,7 +99,7 @@ class ndarray_listener(np.ndarray):
             return
         self._listeners = getattr(obj, '_listeners', [])
 
-    if StrictVersion(np.npyver) < StrictVersion('1.13'):
+    if StrictVersion(np.__version__) < StrictVersion('1.13'):
 
         def __setslice__(self, *args, **kwargs):
             super(ndarray_listener, self).__setslice__(*args, **kwargs)
