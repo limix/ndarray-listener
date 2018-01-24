@@ -68,7 +68,7 @@ class ndarray_listener(np.ndarray):
         >>> vector.talk_to(you0)
         >>>
         >>> vector[0] = 0.0
-        First guy called with [0. 0.1]
+        First guy called with [0.  0.1]
         >>> vector[:] = 1.0
         First guy called with [1. 1.]
         >>>
@@ -83,8 +83,8 @@ class ndarray_listener(np.ndarray):
         >>>
         >>> v1.talk_to(you1)
         >>> vector[-1] = 9.9
-        First guy called with [1. 9.9]
-        Second guy called with [1. 9.9]
+        First guy called with [1.  9.9]
+        Second guy called with [1.  9.9]
     """
 
     def __new__(cls, input_array):
