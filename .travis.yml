@@ -11,10 +11,10 @@ install:
 - rm requirements.txt && popd
 script:
 - coverage run --source ndarray-listener -m pytest
-- python setup.py install && pip uninstall brent-search --yes
+- python setup.py install && pip uninstall ndarray-listener --yes
 - python setup.py sdist
 - pip install dist/$(ls dist | grep -i -E '\.(gz)$' | head -1)
-- pip uninstall brent-search --yes
+- pip uninstall ndarray-listener --yes
 after_success:
 - codecov
 notifications:

@@ -48,8 +48,8 @@ class ndarray_listener(ndarray):
         >>>
         >>> s1 = atleast_1d(scalar)
         >>> s1[0] = 1.0
-        First guy called with [ 1.]
-        Second guy called with [ 1.]
+        First guy called with [1.]
+        Second guy called with [1.]
 
     One-dimension arrays are also supported:
 
@@ -66,23 +66,23 @@ class ndarray_listener(ndarray):
         >>> vector.talk_to(you0)
         >>>
         >>> vector[0] = 0.0
-        First guy called with [ 0.   0.1]
+        First guy called with [0.  0.1]
         >>> vector[:] = 1.0
-        First guy called with [ 1.  1.]
+        First guy called with [1. 1.]
         >>>
         >>> v0 = vector.copy()
         >>> v0.itemset(0, 1.1)
-        First guy called with [ 1.1  1. ]
+        First guy called with [1.1 1. ]
         >>>
         >>> v0.itemset(1, 2.2)
-        First guy called with [ 1.1  2.2]
+        First guy called with [1.1 2.2]
         >>>
         >>> v1 = v0.ravel()
         >>>
         >>> v1.talk_to(you1)
         >>> vector[-1] = 9.9
-        First guy called with [ 1.   9.9]
-        Second guy called with [ 1.   9.9]
+        First guy called with [1.  9.9]
+        Second guy called with [1.  9.9]
     """
 
     def __new__(cls, input_array):
