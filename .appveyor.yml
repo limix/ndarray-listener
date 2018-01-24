@@ -15,7 +15,7 @@ install:
     - cd ..
     - python -c "import sys; import %PKG_NAME%; sys.exit(%PKG_NAME%.test())"
     - pip uninstall %PKG_NAME% --yes
-    - cd $TRAVIS_BUILD_DIR && git clean -xdf
+    - cd %APPVEYOR_BUILD_FOLDER% && git clean -xdf
     - pip install -r requirements.txt
     - cd doc && make html && cd ..
     - git clean -xdf
