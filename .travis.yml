@@ -19,7 +19,6 @@ script:
   - pip install -r requirements.txt
   - cd doc/ && make html && cd ..
   - git clean -xdf
-after_success:
   - python setup.py sdist
 notifications:
   email:
