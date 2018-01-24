@@ -7,8 +7,8 @@ Ndarray-listener's documentation
 
 .. toctree::
     :caption: Table of contents
-     :name: mastertoc
-     :maxdepth: 2
+    :name: mastertoc
+    :maxdepth: 2
 
     install
     usage
