@@ -23,3 +23,12 @@ notifications:
     - danilo.horta@gmail.com
     on_success: never
     on_failure: always
+deploy:
+  provider: pypi
+  user: dhorta
+  password:
+    secure: jAFj6I4CskOhhQipZ91XKvhBz9b3F2G1lEXqHOmRi9A8OE8mOeHzdRWJYGStgXLQckkQiwZIzBuG5IRLLWYEzcUUXMYAyVe4fLPkqjX0tAQYjl5kVMHSu8U71HQ4I2T23wjJR/hf2iYZhjB1RskZZR47aFNzTvjh/+wIGTuMAUjy4cpukFuc3d74gCGbzQ5pk+oehYHvgkJQHbakzZQ+Ctx72MVSQQ+sl7k92WXMCv5//fZUcCBmEAHVzhfZlh3tTZ1DDZWGxGafh27ICtrcrQb6jaHOayAynQNcgsALh5rWeaJJ27WfmgP5xX81iW7kJuDW1t7aU4fLA6G3UATUkj7Y//uxOolraMeMTFu04FfODSLx6rSkXb8lIAd37zqr9os5MiUVpuH8qeIMHmOJVUCzuxKPOnYHO4nZKqkFyjRjxgDlbitIISiHbIuT7Z//0KIEtfYBGfs4f3GdURee3RLHLL6IZi+xEK8qNNCxNbOlIvVtRTwQc2OLtK3TUvMM26HDlj9QKnu2XAd6NhpP5VQixP4gwdWVM2GBPRykg/2RBSiChhIBrLREqO6UGcMv305dw68VcA+TQF0E55PS7BRNyGFPLUv2K5/+JEWWB8dQPSWwJD5oupF69MsI7ASyHG2ovuy0rWK1mXWQ5aBbzQJI5j1+G5b5sW/SVHCOBds=
+  on:
+    tags: true
+    repo: limix/ndarray-listener
+    branch: master
