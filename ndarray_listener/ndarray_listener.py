@@ -5,11 +5,10 @@ Usage
 """
 from distutils.version import StrictVersion
 
-from numpy import __version__ as npyver
-from numpy import asarray, ndarray
+import numpy as np
 
 
-class ndarray_listener(ndarray):
+class ndarray_listener(np.ndarray):
     r"""
 
     Examples
@@ -48,8 +47,8 @@ class ndarray_listener(ndarray):
         >>>
         >>> s1 = atleast_1d(scalar)
         >>> s1[0] = 1.0
-        First guy called with [ 1.]
-        Second guy called with [ 1.]
+        First guy called with [1.]
+        Second guy called with [1.]
 
     One-dimension arrays are also supported:
 
@@ -66,27 +65,27 @@ class ndarray_listener(ndarray):
         >>> vector.talk_to(you0)
         >>>
         >>> vector[0] = 0.0
-        First guy called with [ 0.   0.1]
+        First guy called with [0.  0.1]
         >>> vector[:] = 1.0
-        First guy called with [ 1.  1.]
+        First guy called with [1. 1.]
         >>>
         >>> v0 = vector.copy()
         >>> v0.itemset(0, 1.1)
-        First guy called with [ 1.1  1. ]
+        First guy called with [1.1 1. ]
         >>>
         >>> v0.itemset(1, 2.2)
-        First guy called with [ 1.1  2.2]
+        First guy called with [1.1 2.2]
         >>>
         >>> v1 = v0.ravel()
         >>>
         >>> v1.talk_to(you1)
         >>> vector[-1] = 9.9
-        First guy called with [ 1.   9.9]
-        Second guy called with [ 1.   9.9]
+        First guy called with [1.  9.9]
+        Second guy called with [1.  9.9]
     """
 
     def __new__(cls, input_array):
-        obj = asarray(input_array).view(cls)
+        obj = np.asarray(input_array).view(cls)
 
         if hasattr(input_array, '_listeners'):
             obj._listeners = input_array._listeners
@@ -100,7 +99,7 @@ class ndarray_listener(ndarray):
             return
         self._listeners = getattr(obj, '_listeners', [])
 
-    if StrictVersion(npyver) < StrictVersion('1.13'):
+    if StrictVersion(np.__version__) < StrictVersion('1.13'):
 
         def __setslice__(self, *args, **kwargs):
             super(ndarray_listener, self).__setslice__(*args, **kwargs)
@@ -131,7 +130,7 @@ class ndarray_listener(ndarray):
 
     def __notify(self):
         for l in self._listeners:
-            l(asarray(self))
+            l(np.asarray(self))
 
     def itemset(self, *args, **kwargs):
         super(ndarray_listener, self).itemset(*args, **kwargs)
