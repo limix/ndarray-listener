@@ -8,7 +8,15 @@ from distutils.version import StrictVersion
 import numpy as np
 
 
-class ndarray_listener(np.ndarray):
+class float64(np.float64):
+    def __new__(cls, *args):
+        return np.float64.__new__(cls, *args)
+
+    def talk_to(self, me):
+        pass
+
+
+class ndl(np.ndarray):
     r"""
 
     Examples
@@ -19,7 +27,7 @@ class ndarray_listener(np.ndarray):
     .. doctest::
 
         >>> from __future__ import print_function
-        >>> from ndarray_listener import ndarray_listener
+        >>> from ndarray_listener import ndl
         >>> from numpy import atleast_1d
         >>>
         >>> class Watcher(object):
@@ -29,7 +37,7 @@ class ndarray_listener(np.ndarray):
         ...     def __call__(self, value):
         ...         print(self._msg + " called with %s" % str(value))
         ...
-        >>> scalar = ndarray_listener(-0.5)
+        >>> scalar = ndl(-0.5)
         >>>
         >>> you0 = Watcher("First guy")
         >>> you1 = Watcher("Second guy")
@@ -54,13 +62,13 @@ class ndarray_listener(np.ndarray):
 
     .. doctest::
 
-        >>> from ndarray_listener import ndarray_listener
+        >>> from ndarray_listener import ndl
         >>> from numpy import atleast_1d
         >>> from numpy import set_printoptions
         >>>
         >>> set_printoptions(precision=2, suppress=True)
         >>>
-        >>> vector = ndarray_listener([-0.5, 0.1])
+        >>> vector = ndl([-0.5, 0.1])
         >>>
         >>> you0 = Watcher("First guy")
         >>> you1 = Watcher("Second guy")
@@ -105,27 +113,32 @@ class ndarray_listener(np.ndarray):
     if StrictVersion(np.__version__) < StrictVersion('1.13'):
 
         def __setslice__(self, *args, **kwargs):
-            super(ndarray_listener, self).__setslice__(*args, **kwargs)
+            super(ndl, self).__setslice__(*args, **kwargs)
             self.__notify()
 
     def __setitem__(self, *args, **kwargs):
-        super(ndarray_listener, self).__setitem__(*args, **kwargs)
+        super(ndl, self).__setitem__(*args, **kwargs)
         self.__notify()
 
     def __setattr__(self, *args, **kwargs):
-        super(ndarray_listener, self).__setattr__(*args, **kwargs)
+        super(ndl, self).__setattr__(*args, **kwargs)
         if len(args) > 0 and args[0] == '_listeners':
             return
         self.__notify()
 
     def __getitem__(self, *args, **kwargs):
-        v = super(ndarray_listener, self).__getitem__(*args, **kwargs)
-        if isinstance(v, ndarray_listener):
+        v = super(ndl, self).__getitem__(*args, **kwargs)
+        if isinstance(v, ndl):
             return v
 
-        v = ndarray_listener(v)
+        if np.isscalar(v):
+            v = float64(v)
+        else:
+            v = ndl(v)
+
         for l in self._listeners:
             v.talk_to(l)
+
         return v
 
     def talk_to(self, me):
@@ -136,5 +149,5 @@ class ndarray_listener(np.ndarray):
             l(np.asarray(self))
 
     def itemset(self, *args, **kwargs):
-        super(ndarray_listener, self).itemset(*args, **kwargs)
+        super(ndl, self).itemset(*args, **kwargs)
         self.__notify()

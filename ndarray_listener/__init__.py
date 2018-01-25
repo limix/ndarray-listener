@@ -1,6 +1,6 @@
-from .ndarray_listener import ndarray_listener
+from .ndl import float64, ndl
 from .testit import test
 
-__version__ = "1.0.29"
+__version__ = "1.1.0"
 
-__all__ = ["__version__", "test", "ndarray_listener"]
+__all__ = ["__version__", "test", "ndl", "float64"]
