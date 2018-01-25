@@ -7,7 +7,7 @@ addons:
   apt:
     packages:
       - pandoc
-install:
+script:
 - bash <(curl -fsSL https://raw.githubusercontent.com/horta/ci/master/travis.sh)
 notifications:
   email:
