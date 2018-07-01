@@ -1,2 +1,2 @@
-.. automodule:: ndarray_listener.ndl
+.. automodule:: ndarray_listener._ndl
   :members:
