@@ -1,4 +1,4 @@
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
 
 import numpy as np
 
@@ -124,7 +124,7 @@ class ndl(np.ndarray):
             return
         self._listeners = getattr(obj, "_listeners", [])
 
-    if StrictVersion(np.__version__) < StrictVersion("1.13"):
+    if LooseVersion(np.__version__) < LooseVersion("1.13"):
 
         def __setslice__(self, *args, **kwargs):
             super(ndl, self).__setslice__(*args, **kwargs)
