@@ -10,8 +10,23 @@ Ndarray-listener's documentation
     :name: mastertoc
     :maxdepth: 2
 
-    install
-    usage
+*******
+Install
+*******
+
+Installation is as simple as::
+
+  pip install ndarray-listener
+
+*****
+Usage
+*****
+
+.. autoclass:: ndarray_listener.ndl
+  :members:
+
+.. autoclass:: ndarray_listener.float64
+  :members:
 
 *****************
 Comments and bugs

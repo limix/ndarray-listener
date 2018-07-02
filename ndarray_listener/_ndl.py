@@ -1,18 +1,32 @@
-r"""
-*****
-Usage
-*****
-"""
 from distutils.version import StrictVersion
 
 import numpy as np
 
 
 class float64(np.float64):
+    r"""
+
+    Examples
+    --------
+
+    .. doctest::
+
+        >>> from ndarray_listener import ndl, float64
+        >>>
+        >>> print(float64(1.5))
+        1.5
+        >>> print(ndl(1.5))
+        1.5
+    """
+
     def __new__(cls, *args):
         return np.float64.__new__(cls, *args)
 
     def talk_to(self, me):
+        r"""Not implemented.
+
+        Array-scalars are immutable.
+        """
         pass
 
 
