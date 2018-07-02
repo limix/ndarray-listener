@@ -2,11 +2,7 @@ language: python
 sudo: false
 python: 3.6
 env:
-  - PKG_NAME=ndarray_listener
-addons:
-  apt:
-    packages:
-      - pandoc
+- PKG_NAME=ndarray_listener
 script:
 - bash <(curl -fsSL https://raw.githubusercontent.com/horta/ci/master/travis.sh)
 notifications:

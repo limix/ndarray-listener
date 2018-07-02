@@ -1,18 +1,32 @@
-r"""
-*****
-Usage
-*****
-"""
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
 
 import numpy as np
 
 
 class float64(np.float64):
+    r"""
+
+    Examples
+    --------
+
+    .. doctest::
+
+        >>> from ndarray_listener import ndl, float64
+        >>>
+        >>> print(float64(1.5))
+        1.5
+        >>> print(ndl(1.5))
+        1.5
+    """
+
     def __new__(cls, *args):
         return np.float64.__new__(cls, *args)
 
     def talk_to(self, me):
+        r"""Not implemented.
+
+        Array-scalars are immutable.
+        """
         pass
 
 
@@ -98,7 +112,7 @@ class ndl(np.ndarray):
     def __new__(cls, input_array):
         obj = np.asarray(input_array).view(cls)
 
-        if hasattr(input_array, '_listeners'):
+        if hasattr(input_array, "_listeners"):
             obj._listeners = input_array._listeners
         else:
             obj._listeners = []
@@ -108,9 +122,9 @@ class ndl(np.ndarray):
     def __array_finalize__(self, obj):
         if obj is None:
             return
-        self._listeners = getattr(obj, '_listeners', [])
+        self._listeners = getattr(obj, "_listeners", [])
 
-    if StrictVersion(np.__version__) < StrictVersion('1.13'):
+    if LooseVersion(np.__version__) < LooseVersion("1.13"):
 
         def __setslice__(self, *args, **kwargs):
             super(ndl, self).__setslice__(*args, **kwargs)
@@ -122,7 +136,7 @@ class ndl(np.ndarray):
 
     def __setattr__(self, *args, **kwargs):
         super(ndl, self).__setattr__(*args, **kwargs)
-        if len(args) > 0 and args[0] == '_listeners':
+        if len(args) > 0 and args[0] == "_listeners":
             return
         self.__notify()
 
