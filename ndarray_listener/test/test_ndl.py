@@ -29,7 +29,7 @@ def test_notification():
         def __init__(self):
             self.called_me = False
 
-        def __call__(self, _):
+        def __call__(self):
             self.called_me = True
 
     w = Watcher()
@@ -83,7 +83,7 @@ def test_scalar_copy_listener():
         def __init__(self):
             self.called_me = False
 
-        def __call__(self, _):
+        def __call__(self):
             self.called_me = True
 
     you0 = Watcher()
@@ -114,7 +114,7 @@ def test_array_copy_listener():
         def __init__(self):
             self.called_me = False
 
-        def __call__(self, _):
+        def __call__(self):
             self.called_me = True
 
     you0 = Watcher()
