@@ -48,8 +48,8 @@ class ndl(np.ndarray):
         ...     def __init__(self, msg):
         ...         self._msg = msg
         ...
-        ...     def __call__(self, value):
-        ...         print(self._msg + " called with %s" % str(value))
+        ...     def __call__(self):
+        ...         print(self._msg + " called me")
         ...
         >>> scalar = ndl(-0.5)
         >>>
@@ -58,19 +58,19 @@ class ndl(np.ndarray):
         >>>
         >>> scalar.talk_to(you0)
         >>> scalar.itemset(-1.0)
-        First guy called with -1.0
+        First guy called me
         >>> s0 = scalar.copy()
         >>> s0.itemset(-0.5)
-        First guy called with -0.5
+        First guy called me
         >>> s0.talk_to(you1)
         >>> scalar.itemset(0.0)
-        First guy called with 0.0
-        Second guy called with 0.0
+        First guy called me
+        Second guy called me
         >>>
         >>> s1 = atleast_1d(scalar)
         >>> s1[0] = 1.0
-        First guy called with [1.]
-        Second guy called with [1.]
+        First guy called me
+        Second guy called me
 
     One-dimension arrays are also supported:
 
@@ -90,23 +90,23 @@ class ndl(np.ndarray):
         >>> vector.talk_to(you0)
         >>>
         >>> vector[0] = 0.0
-        First guy called with [0.  0.1]
+        First guy called me
         >>> vector[:] = 1.0
-        First guy called with [1. 1.]
+        First guy called me
         >>>
         >>> v0 = vector.copy()
         >>> v0.itemset(0, 1.1)
-        First guy called with [1.1 1. ]
+        First guy called me
         >>>
         >>> v0.itemset(1, 2.2)
-        First guy called with [1.1 2.2]
+        First guy called me
         >>>
         >>> v1 = v0.ravel()
         >>>
         >>> v1.talk_to(you1)
         >>> vector[-1] = 9.9
-        First guy called with [1.  9.9]
-        Second guy called with [1.  9.9]
+        First guy called me
+        Second guy called me
     """
 
     def __new__(cls, input_array):
@@ -160,7 +160,7 @@ class ndl(np.ndarray):
 
     def __notify(self):
         for l in self._listeners:
-            l(np.asarray(self))
+            l()
 
     def itemset(self, *args, **kwargs):
         super(ndl, self).itemset(*args, **kwargs)
