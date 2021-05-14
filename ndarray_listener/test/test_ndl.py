@@ -136,3 +136,44 @@ def test_array_copy_listener():
     a[0] = 1.0
 
     assert_(you1.called_me)
+
+
+def test_weakref_proxy():
+    a = ndl(np.array([-0.5, 0.1, 1.1]))
+
+    class Watcher(object):
+        def __init__(self):
+            self.called_me = False
+
+        def __call__(self):
+            self.called_me = True
+
+    w = Watcher()
+    a.talk_to(w)
+
+    assert_(not w.called_me)
+    a[0] = 1.2
+    assert_(w.called_me)
+
+    del w
+    a[0] = 1.3
+
+def test_weakref_proxymethod():
+    a = ndl(np.array([-0.5, 0.1, 1.1]))
+
+    class Watcher(object):
+        def __init__(self):
+            self.called_me = False
+
+        def call_me(self):
+            self.called_me = True
+
+    w = Watcher()
+    a.talk_to(w.call_me)
+
+    assert_(not w.called_me)
+    a[0] = 1.2
+    assert_(w.called_me)
+
+    del w
+    a[0] = 1.3

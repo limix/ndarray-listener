@@ -1,4 +1,5 @@
 from distutils.version import LooseVersion
+import weakref
 
 import numpy as np
 
@@ -150,18 +151,40 @@ class ndl(np.ndarray):
         else:
             v = ndl(v)
 
-        for l in self._listeners:
-            v.talk_to(l)
+        for k in self._listeners:
+            v.talk_to(k)
 
         return v
 
     def talk_to(self, me):
-        self._listeners.append(me)
+        self._listeners.append(_create_callback(me))
 
     def __notify(self):
-        for l in self._listeners:
-            l()
+        dirty = False
+        for k in self._listeners:
+            cb = k()
+            if cb is None:
+                dirty = True
+            else:
+                cb()
+
+        if dirty:
+            self.__flush()
+
+    def __flush(self):
+        self._listeners = [k for k in self._listeners if k() is not None]
 
     def itemset(self, *args, **kwargs):
         super(ndl, self).itemset(*args, **kwargs)
         self.__notify()
+
+def _create_callback(cb):
+    try:
+        return weakref.WeakMethod(cb)
+    except TypeError:
+        def _callback():
+            try:
+                return weakref.proxy(cb)
+            except ReferenceError:
+                return None
+        return _callback
