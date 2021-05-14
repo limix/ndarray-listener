@@ -1,4 +1,3 @@
-from distutils.version import LooseVersion
 import weakref
 
 import numpy as np
@@ -124,12 +123,6 @@ class ndl(np.ndarray):
         if obj is None:
             return
         self._listeners = getattr(obj, "_listeners", [])
-
-    if LooseVersion(np.__version__) < LooseVersion("1.13"):
-
-        def __setslice__(self, *args, **kwargs):
-            super(ndl, self).__setslice__(*args, **kwargs)
-            self.__notify()
 
     def __setitem__(self, *args, **kwargs):
         super(ndl, self).__setitem__(*args, **kwargs)
