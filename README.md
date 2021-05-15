@@ -6,7 +6,7 @@ Implementation of the [Observer pattern](https://en.wikipedia.org/wiki/Observer_
 
 ```python
 from numpy import array
-from ndarray_listener import ndarray_listener as ndl
+from ndarray_listener import ndl
 
 a = ndl(array([-0.5, 0.1, 1.1]))
 
@@ -44,7 +44,7 @@ pip install ndarray-listener
 Install dependencies
 
 ```bash
-pip install -U pytest pytest-pep8
+pip install pytest
 ```
 
 then run
@@ -52,6 +52,10 @@ then run
 ```python
 python -c "import ndarray_listener; ndarray_listener.test()"
 ```
+
+## Documentation
+
+[Documentation](https://ndarray-listener.readthedocs.io/en/latest/)
 
 ## Authors
 
