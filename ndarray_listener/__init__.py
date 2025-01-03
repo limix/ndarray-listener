@@ -1,7 +1,7 @@
 from ._ndl import float64, ndl
 from ._testit import test
 
-__version__ = "2.0.1"
+__version__ = "2.0.2"
 
 ndarray_listener = ndl
 

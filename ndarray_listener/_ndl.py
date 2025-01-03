@@ -57,13 +57,13 @@ class ndl(np.ndarray):
         >>> you1 = Watcher("Second guy")
         >>>
         >>> scalar.talk_to(you0)
-        >>> scalar.itemset(-1.0)
+        >>> scalar[()] = -1.0
         First guy called me
         >>> s0 = scalar.copy()
-        >>> s0.itemset(-0.5)
+        >>> s0[()] = -0.5
         First guy called me
         >>> s0.talk_to(you1)
-        >>> scalar.itemset(0.0)
+        >>> scalar[()] = 0.0
         First guy called me
         Second guy called me
         >>>
@@ -95,10 +95,10 @@ class ndl(np.ndarray):
         First guy called me
         >>>
         >>> v0 = vector.copy()
-        >>> v0.itemset(0, 1.1)
+        >>> v0[0] = 1.1
         First guy called me
         >>>
-        >>> v0.itemset(1, 2.2)
+        >>> v0[1] = 2.2
         First guy called me
         >>>
         >>> v1 = v0.ravel()
@@ -166,10 +166,6 @@ class ndl(np.ndarray):
 
     def __flush(self):
         self._listeners = [k for k in self._listeners if k() is not None]
-
-    def itemset(self, *args, **kwargs):
-        super(ndl, self).itemset(*args, **kwargs)
-        self.__notify()
 
 def _create_callback(cb):
     try:

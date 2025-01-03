@@ -16,7 +16,7 @@ def test_operations():
 
 def test_itemset():
     a = ndl(-0.5)
-    a.itemset(1.0)
+    a[()] = 1.0
     assert_array_almost_equal(a, [1])
 
 
@@ -94,7 +94,7 @@ def test_scalar_copy_listener():
     b = ndl(a)
     assert_(not you0.called_me)
 
-    b.itemset(1.0)
+    b[()] = 1.0
 
     assert_(you0.called_me)
 
@@ -102,7 +102,7 @@ def test_scalar_copy_listener():
 
     assert_(not you1.called_me)
 
-    a.itemset(1.0)
+    a[()] = 1.0
 
     assert_(you1.called_me)
 
